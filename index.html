@@ -130,6 +130,8 @@ const THICK = 0.6;                                                // card thickn
 
 let state = { opt: 0, pair: 0, spin: true };
 try { const saved = JSON.parse(localStorage.getItem("dangler-viewer") || "{}"); Object.assign(state, saved); } catch (e) {}
+if (!(state.opt >= 0 && state.opt < D.length)) state.opt = 0;
+if (!(state.pair >= 0 && state.pair < 3)) state.pair = 0;
 const fromHash = D.findIndex(o => "#" + o.id === location.hash); if (fromHash >= 0) state.opt = fromHash;
 const save = () => { try { localStorage.setItem("dangler-viewer", JSON.stringify(state)); } catch (e) {} };
 
